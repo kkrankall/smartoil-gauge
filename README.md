@@ -10,7 +10,9 @@ Smart Oil Gauge doesn't offer an API for owners, so the integration logs in
 the way the website does and reads the website's own data calls. If the
 company changes the site, the integration may need an update.
 
-Not affiliated with Smart Oil Gauge or Connected Consumer Fuel.
+> [!WARNING]
+> **Unofficial. Not affiliated with Smart Oil Gauge. Use at your own risk.**
+> See the [disclaimer](#disclaimer) below.
 
 ## Install
 
@@ -63,3 +65,29 @@ pytest
 
 The tests run the client against a fake site that mirrors the real login
 form and data calls, and check the values against captured responses.
+
+## Disclaimer
+
+This is an independent, unofficial project. It is not affiliated with,
+endorsed by, or supported by Smart Oil Gauge, Connected Consumer Fuel,
+FuelSnap, or any fuel dealer. "Smart Oil Gauge" and related names are
+trademarks of their owners and are used here only to say what the
+integration works with. Please don't contact Smart Oil Gauge support about
+this integration; open an issue here instead.
+
+Use it at your own risk:
+
+- It relies on the website's internal requests, which aren't a public API.
+  They can change or stop working at any time without notice.
+- Check Smart Oil Gauge's terms of service and decide for yourself whether
+  automated access to your account is acceptable.
+- Your Smart Oil Gauge username and password are stored in your Home
+  Assistant configuration, like other integrations' credentials.
+- Readings, estimates, delivery detection and alerts can be wrong, late or
+  missing. Don't rely on this integration alone to decide when to order oil.
+  Keep an eye on your tank and on the official app, especially in winter.
+
+The software is provided "as is", without warranty of any kind, as set out
+in the [MIT License](LICENSE). The authors are not liable for any damages or
+losses from using it, including running out of fuel, frozen pipes, missed
+deliveries, or problems with your Smart Oil Gauge account.
