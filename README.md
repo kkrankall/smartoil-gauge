@@ -76,6 +76,26 @@ gauge is offline or while usage is under 0.2 gallons a day.
 - **Download diagnostics** on the integration gives the raw tank data, with
   your username, ZIP code, sensor ID and dealer link removed.
 
+## Why not multiscrape?
+
+A common way to get Smart Oil Gauge into Home Assistant is the multiscrape
+integration plus YAML template sensors. This integration replaced a setup
+like that, with about 20 hand-written entities.
+
+| | multiscrape + templates | This integration |
+|---|---|---|
+| Setup | YAML scrapers and template sensors you write and maintain | Settings → Devices & services, then log in |
+| Login | A form-submit step inside the scraper. When it fails, it shows up as a scrape error. | Keeps the session cookie across restarts and sends the password only when the session expires. A rejected password brings up a Reauthenticate prompt instead of a retry loop. |
+| Numbers | You write the formulas, and they can drift from the app. The setup this replaced showed 27.4% full because it divided by the 251 gal fillable volume; the app divides by the 275 gal tank size and shows 25%. | The same formulas as the website's own code: days to ¼ and ⅛, and the 96-hour offline rule |
+| Entities | Loose sensors with no device. Templates go `unknown` when an input changes. | One device per tank, with units and device classes on every value |
+| History | Starts the day you set it up | The site's past year of levels comes in a `history` attribute, so charts are full on day one |
+| Failures | Each scraper fails on its own | If the history call fails, level and usage still update. During a site outage the entities go unavailable, then recover on their own. |
+| Fixes | Every user patches their own YAML | One codebase with automated tests. Fixes arrive as a HACS update. |
+
+Both approaches use the website's internal data calls, because Smart Oil Gauge
+has no public API for owners. If the site changes, both can break. Here, the
+fix lands in one tested place.
+
 ## Development
 
 ```
