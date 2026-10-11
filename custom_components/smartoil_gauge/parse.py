@@ -84,6 +84,31 @@ def detect_last_fill(dataset: dict, capacity: float | None) -> tuple[int | None,
     return None, None
 
 
+def level_history(dataset: dict) -> list[list[float]]:
+    """The tank level over the past year as [epoch ms, gallons], for charts.
+
+    Uses the finest series available for each stretch: hourly for the last
+    week, every 8 hours for the last month, daily before that. The level is
+    the site's smoothed, dead-zone-corrected value (fgal), as on its graph.
+    """
+    series = {period: (dataset.get(period) or {}).get("points") or []
+              for period in ("year", "month", "week")}
+    cutoff = {period: min((int(p["ts"]) for p in points), default=None)
+              for period, points in series.items()}
+    history = []
+    for period, finer in (("year", "month"), ("month", "week"), ("week", None)):
+        for point in series[period]:
+            ts = int(point["ts"])
+            if finer and cutoff[finer] is not None and ts >= cutoff[finer]:
+                continue
+            gallons = _num(point.get("fgal"))
+            if gallons is None:
+                gallons = _num(point.get("gallons"))
+            if gallons is not None:
+                history.append([ts * 1000, round(gallons, 2)])
+    return sorted(history)
+
+
 def _latest_temperature(dataset: dict) -> float | None:
     """Temperature comes in tenths of a degree F (a basement tank reads
     540-810 over a year). Use the newest reading that has one."""
@@ -151,4 +176,5 @@ def parse_tank(tank: dict, graph: dict | None, now: float) -> dict[str, Any]:
     fill_ts, fill_gallons = detect_last_fill(dataset, capacity)
     data["last_fill"] = _time(fill_ts)
     data["last_fill_amount"] = fill_gallons
+    data["level_history"] = level_history(dataset)
     return data

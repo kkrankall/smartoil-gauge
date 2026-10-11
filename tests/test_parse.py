@@ -44,6 +44,19 @@ def test_history():
     assert data["last_fill_amount"] == 149.8
 
 
+def test_level_history_uses_finest_series():
+    history = _parse()["level_history"]
+    stamps = [ts for ts, _ in history]
+    assert stamps == sorted(stamps)
+    # Year points stop where the month series starts; month points where the week starts.
+    assert history[0] == [1773983262000, 125.96]
+    assert [1774501475000, 259.11] in history          # after the March fill, dead-zone corrected
+    assert [1791639039000, 69.57] in history           # month point before the week window
+    assert [1791695781000, 68.4] not in history        # year/month point inside the week window
+    assert history[-1] == [1791724153000, 68.84]       # latest week point
+    assert len(history) == 14 + 3 + 4  # year before month start, month before week start, week
+
+
 def test_below_low_level():
     data = _parse(sensor_gallons="50")
     assert data["low_level"] is True

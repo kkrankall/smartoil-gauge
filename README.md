@@ -46,6 +46,22 @@ For each tank:
 | Sensor offline | On after 96 hours without a reading, when the website also flags the gauge offline. |
 | Battery, Sensor status, Capacity, Fillable capacity, Low level alert | Diagnostic. |
 
+The Gallons sensor also carries the site's level history for the past
+year in a `history` attribute: `[epoch ms, gallons]` pairs, hourly for the
+last week, every 8 hours for the last month and daily before that. Home
+Assistant doesn't record this attribute, so it costs no database space, but
+charts can use it straight away instead of waiting for history to build up.
+For example, with [apexcharts-card](https://github.com/RomRider/apexcharts-card):
+
+```yaml
+type: custom:apexcharts-card
+graph_span: 365d
+series:
+  - entity: sensor.oil_tank_gallons
+    type: area
+    data_generator: return entity.attributes.history || [];
+```
+
 The days-to estimates follow the website's own rules: no estimate while the
 gauge is offline or while usage is under 0.2 gallons a day.
 

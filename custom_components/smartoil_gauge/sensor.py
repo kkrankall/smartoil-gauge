@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Any
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
@@ -165,6 +166,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: SmartOilConfigEntry,
 class SmartOilSensor(SmartOilEntity, SensorEntity):
     """A tank reading or estimate."""
 
+    # The site's level history is for charts (apexcharts-card's
+    # data_generator); it is too big and too redundant to record.
+    _unrecorded_attributes = frozenset({"history"})
+
     @property
     def native_value(self) -> float | str | datetime | None:
         return self.value
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any] | None:
+        if self.entity_description.key != "gallons":
+            return None
+        return {"history": self.coordinator.data[self.tank_id].get("level_history") or []}

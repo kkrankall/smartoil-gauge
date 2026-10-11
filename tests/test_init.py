@@ -81,6 +81,9 @@ async def test_entities(hass: HomeAssistant, entry, site, freezer, hass_storage)
     assert actual == expected
     assert hass.states.get("sensor.my_tank_gallons").attributes["unit_of_measurement"] == "gal"
     assert hass.states.get("sensor.my_tank_temperature").attributes["unit_of_measurement"] == "°F"
+    history = hass.states.get("sensor.my_tank_gallons").attributes["history"]
+    assert history[-1] == [1791724153000, 68.84]
+    assert "history" not in hass.states.get("sensor.my_tank_level").attributes
 
     device = dr.async_get(hass).async_get_device_by_identifier((DOMAIN, "1001"), entry.entry_id)
     assert device.name == "My Tank"
