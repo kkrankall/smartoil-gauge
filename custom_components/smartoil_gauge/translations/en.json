@@ -1,0 +1,56 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Smart Oil Gauge",
+        "description": "Log in with the account you use at app.smartoilgauge.com.",
+        "data": {
+          "username": "Username or email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Log in again",
+        "description": "Smart Oil Gauge no longer accepts the password for {username}. Enter the current one.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Smart Oil Gauge did not accept that username and password.",
+      "cannot_connect": "Could not reach app.smartoilgauge.com. Try again later.",
+      "no_tanks": "This account has no tanks.",
+      "unknown": "Unexpected error. Check the Home Assistant log."
+    },
+    "abort": {
+      "already_configured": "This Smart Oil Gauge account is already set up.",
+      "reauth_successful": "Logged in again."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "gallons": { "name": "Gallons" },
+      "level": { "name": "Level" },
+      "usage_rate": { "name": "Usage rate" },
+      "days_to_low": { "name": "Days to low level" },
+      "days_to_eighth": { "name": "Days to 1/8 tank" },
+      "gallons_to_fill": { "name": "Gallons to fill" },
+      "used_7_days": { "name": "Used last 7 days" },
+      "used_30_days": { "name": "Used last 30 days" },
+      "used_365_days": { "name": "Used last 365 days" },
+      "last_fill": { "name": "Last fill" },
+      "last_fill_amount": { "name": "Last fill amount" },
+      "last_reading": { "name": "Last reading" },
+      "battery": { "name": "Battery" },
+      "sensor_status": { "name": "Sensor status" },
+      "capacity": { "name": "Capacity" },
+      "fillable_capacity": { "name": "Fillable capacity" },
+      "low_level_alert": { "name": "Low level alert" }
+    },
+    "binary_sensor": {
+      "low_level": { "name": "Low level" },
+      "sensor_offline": { "name": "Sensor offline" }
+    }
+  }
+}

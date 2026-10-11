@@ -1,0 +1,51 @@
+{
+  "result": "ok",
+  "tanks": [
+    {
+      "tank_id": "1001",
+      "tank_name": "My Tank",
+      "low_level": "0.25",
+      "sensor_gallons": "68.84",
+      "sensor_rt": "2026-10-11 09:09:13",
+      "model_gallons": null,
+      "ddd": null,
+      "nominal": "275",
+      "fillable": "251",
+      "sensor_usg": "1.41941",
+      "battery": "Good",
+      "sensor_status": "Active",
+      "last_read": "1791724153",
+      "deadzone": "235",
+      "data_servers": "data.connectedconsumerfuel.com",
+      "refreshed": 1791725570,
+      "result": "ok",
+      "zip_code": "00000",
+      "can_fs": "1",
+      "pt_id": null,
+      "brand_locked": null,
+      "model_monitored": "0",
+      "sensors": [
+        {
+          "registration_id": "2001",
+          "sensor_id": "3001",
+          "description": "My Tank",
+          "registration_date": "2022-03-19 14:06:35",
+          "end_date": null,
+          "l_read": "2026-10-11 09:09:13",
+          "l_gallons": "68.84",
+          "l_battery": "Good",
+          "l_pulse": "4667",
+          "rlm": "2026-10-11 00:17:16",
+          "plm": "4703",
+          "ulm": "1.41941",
+          "ublf": "3.71013",
+          "rblf": "2026-03-25 00:25:36",
+          "usg": "1.41941",
+          "nrbf": "13"
+        }
+      ],
+      "buy": {"brand_id": 0}
+    }
+  ],
+  "Status": 200
+}

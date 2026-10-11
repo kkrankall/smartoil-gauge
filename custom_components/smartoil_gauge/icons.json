@@ -1,0 +1,27 @@
+{
+  "entity": {
+    "sensor": {
+      "gallons": { "default": "mdi:oil" },
+      "level": { "default": "mdi:gauge" },
+      "usage_rate": { "default": "mdi:fire" },
+      "days_to_low": { "default": "mdi:calendar-clock" },
+      "days_to_eighth": { "default": "mdi:calendar-alert" },
+      "gallons_to_fill": { "default": "mdi:truck-delivery" },
+      "used_7_days": { "default": "mdi:chart-line" },
+      "used_30_days": { "default": "mdi:chart-line" },
+      "used_365_days": { "default": "mdi:chart-line" },
+      "last_fill": { "default": "mdi:truck-check" },
+      "last_fill_amount": { "default": "mdi:truck-check" },
+      "last_reading": { "default": "mdi:clock-outline" },
+      "battery": { "default": "mdi:battery" },
+      "sensor_status": { "default": "mdi:access-point" },
+      "capacity": { "default": "mdi:propane-tank" },
+      "fillable_capacity": { "default": "mdi:propane-tank-outline" },
+      "low_level_alert": { "default": "mdi:gauge-low" }
+    },
+    "binary_sensor": {
+      "low_level": { "default": "mdi:gauge-low" },
+      "sensor_offline": { "default": "mdi:access-point-off" }
+    }
+  }
+}

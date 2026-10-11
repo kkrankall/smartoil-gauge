@@ -1,0 +1,72 @@
+{
+  "result": "ok",
+  "refreshed": "1791725570",
+  "datasets": {
+    "2001": {
+      "day": {
+        "points": [
+          {"ts": 1791692236, "gallons": 67.08, "fgal": 67.08, "temperature": 717, "usg": "1.69"},
+          {"ts": 1791695781, "gallons": 68.4, "fgal": 68.4, "temperature": 716, "usg": "-6.78"},
+          {"ts": 1791699327, "gallons": 66.88, "fgal": 66.88, "temperature": 715, "usg": "4.17"},
+          {"ts": 1791702874, "gallons": 66.88, "fgal": 66.88, "temperature": 714, "usg": "3.13"},
+          {"ts": 1791706420, "gallons": 66.84, "fgal": 66.84, "temperature": 713, "usg": "2.59"},
+          {"ts": 1791709967, "gallons": 68.2, "fgal": 68.2, "temperature": 712, "usg": "-6.34"},
+          {"ts": 1791713513, "gallons": 67.86, "fgal": 67.86, "temperature": 711, "usg": "-2.68"},
+          {"ts": 1791717060, "gallons": 67.57, "fgal": 67.57, "temperature": 711, "usg": "-0.24"},
+          {"ts": 1791720604, "gallons": 67.18, "fgal": 67.18, "temperature": 712, "usg": "2.20"},
+          {"ts": 1791724153, "gallons": 68.84, "fgal": 68.84, "temperature": 712, "usg": "-8.45"}
+        ],
+        "start_ts": "1791691200",
+        "gpd": "-4.8",
+        "gallons": "-1.77"
+      },
+      "week": {
+        "points": [
+          {"ts": 1791713513, "gallons": 67.86, "fgal": "68.86", "temperature": 711, "usg": "0.14"},
+          {"ts": 1791717060, "gallons": 67.57, "fgal": "68.85", "temperature": 711, "usg": "0.14"},
+          {"ts": 1791720604, "gallons": 67.18, "fgal": "68.85", "temperature": 712, "usg": "0.14"},
+          {"ts": 1791724153, "gallons": 68.84, "fgal": "68.84", "temperature": 712, "usg": "0.14"}
+        ],
+        "start_ts": "1791086400",
+        "gpd": "1.4",
+        "gallons": "10.29"
+      },
+      "month": {
+        "points": [
+          {"ts": 1791639039, "gallons": 69.57, "fgal": "69.57", "temperature": 704, "usg": "1.02"},
+          {"ts": 1791667409, "gallons": 68.3, "fgal": "68.99", "temperature": 720, "usg": "1.21"},
+          {"ts": 1791695781, "gallons": 68.4, "fgal": "68.92", "temperature": 716, "usg": "0.96"},
+          {"ts": 1791724153, "gallons": 68.84, "fgal": "68.84", "temperature": 712, "usg": "0.78"}
+        ],
+        "start_ts": "1789099200",
+        "gpd": "0.8",
+        "gallons": "24.26"
+      },
+      "year": {
+        "points": [
+          {"ts": 1773983262, "gallons": 125.96, "fgal": "125.96", "temperature": 615, "usg": "4.10"},
+          {"ts": 1774072010, "gallons": 123.01, "fgal": 123.01, "temperature": 638, "usg": "3.79"},
+          {"ts": 1774157192, "gallons": 121.05, "fgal": 121.05, "temperature": 644, "usg": "3.34"},
+          {"ts": 1774242369, "gallons": 118.15, "fgal": 118.15, "temperature": 658, "usg": "3.24"},
+          {"ts": 1774331094, "gallons": 113.63, "fgal": 113.63, "temperature": 637, "usg": "3.53"},
+          {"ts": 1774416285, "gallons": 109.35, "fgal": 109.35, "temperature": 630, "usg": "3.73"},
+          {"ts": 1774501475, "gallons": 230.48, "fgal": 259.11, "temperature": 643, "usg": "3.73"},
+          {"ts": 1774590190, "gallons": 232.18, "fgal": "256.34", "temperature": 678, "usg": "3.47"},
+          {"ts": 1774675342, "gallons": 231.59, "fgal": "253.68", "temperature": 653, "usg": "3.28"},
+          {"ts": 1774760523, "gallons": 232.73, "fgal": "251.02", "temperature": 633, "usg": "3.13"},
+          {"ts": 1774849264, "gallons": 231.63, "fgal": "248.25", "temperature": 639, "usg": "3.02"},
+          {"ts": 1774934431, "gallons": 231.91, "fgal": "245.59", "temperature": 674, "usg": "2.94"},
+          {"ts": 1791522004, "gallons": 70.94, "fgal": "70.94", "temperature": 717, "usg": "1.26"},
+          {"ts": 1791610662, "gallons": 67.91, "fgal": "69.64", "temperature": 712, "usg": "1.26"},
+          {"ts": 1791695781, "gallons": 68.4, "fgal": "68.40", "temperature": 716, "usg": "1.26"}
+        ],
+        "start_ts": "1760155200",
+        "gpd": "1.9",
+        "gallons": "693.46"
+      },
+      "rid": 2001,
+      "sid": "3001",
+      "ymax": "275"
+    }
+  }
+}

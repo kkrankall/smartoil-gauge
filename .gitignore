@@ -1,0 +1,5 @@
+# Local-only captures and HA config files. Never commit if this repo is public.
+local/
+.DS_Store
+__pycache__/
+.venv/
