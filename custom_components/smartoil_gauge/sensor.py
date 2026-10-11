@@ -59,6 +59,14 @@ SENSORS: tuple[SensorEntityDescription, ...] = (
         suggested_display_precision=0,
     ),
     SensorEntityDescription(
+        key="days_to_empty",
+        translation_key="days_to_empty",
+        device_class=SensorDeviceClass.DURATION,
+        native_unit_of_measurement=UnitOfTime.DAYS,
+        state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=0,
+    ),
+    SensorEntityDescription(
         key="gallons_to_fill",
         translation_key="gallons_to_fill",
         device_class=SensorDeviceClass.VOLUME_STORAGE,
@@ -68,13 +76,23 @@ SENSORS: tuple[SensorEntityDescription, ...] = (
     ),
     *(
         SensorEntityDescription(
-            key=f"used_{days}_days",
-            translation_key=f"used_{days}_days",
+            key=f"used_{days}",
+            translation_key=f"used_{days}",
             native_unit_of_measurement=UnitOfVolume.GALLONS,
             state_class=SensorStateClass.MEASUREMENT,
             suggested_display_precision=1,
         )
-        for days in (7, 30, 365)
+        for days in ("today", "7_days", "30_days", "365_days")
+    ),
+    *(
+        SensorEntityDescription(
+            key=f"average_use_{days}",
+            translation_key=f"average_use_{days}",
+            native_unit_of_measurement=GALLONS_PER_DAY,
+            state_class=SensorStateClass.MEASUREMENT,
+            suggested_display_precision=1,
+        )
+        for days in ("today", "7_days", "30_days", "365_days")
     ),
     SensorEntityDescription(
         key="last_fill",

@@ -20,6 +20,7 @@ def test_matches_the_website():
     # The website shows 0 days to 1/4 and 24 days to 1/8 for this reading.
     assert data["days_to_low"] == 0.1
     assert data["days_to_eighth"] == 24.3
+    assert data["days_to_empty"] == 48.5
     assert data["gallons_to_fill"] == 182.2
     assert data["low_level"] is False
     assert data["battery"] == "Good"
@@ -29,9 +30,14 @@ def test_matches_the_website():
 
 def test_history():
     data = _parse()
+    assert data["used_today"] == -1.77
     assert data["used_7_days"] == 10.29
     assert data["used_30_days"] == 24.26
     assert data["used_365_days"] == 693.46
+    assert data["average_use_today"] == -4.8
+    assert data["average_use_7_days"] == 1.4
+    assert data["average_use_30_days"] == 0.8
+    assert data["average_use_365_days"] == 1.9
     assert data["temperature"] == 71.2
     # 109.35 gal before the March delivery, 259.11 after (corrected for the dead zone).
     assert data["last_fill"] == datetime.fromtimestamp(1774501475, UTC)
@@ -50,6 +56,7 @@ def test_offline_after_96_hours_drops_estimates():
     assert data["sensor_offline"] is True
     assert data["days_to_low"] is None
     assert data["days_to_eighth"] is None
+    assert data["days_to_empty"] is None
     assert data["gallons"] == 68.84
 
 

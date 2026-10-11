@@ -35,8 +35,10 @@ For each tank:
 | Usage rate | Gallons per day: the website's rolling average over the past week or two. |
 | Days to low level | Days until the level reaches the low-level alert set on the website (1/4 tank by default). |
 | Days to 1/8 tank | Days until 1/8 of a tank. |
+| Days to empty | Days until the tank would run dry at the current rate. |
 | Gallons to fill | Room left up to the tank's fillable capacity. |
-| Used last 7 / 30 / 365 days | Gallons burned in each period, net of deliveries, as the website's graph reports them. |
+| Used today, Used last 7 / 30 / 365 days | Gallons burned in each period, net of deliveries, as the website's graph reports them. "Today" starts at midnight and can be slightly negative early in the day, because readings wander by a gallon or two. |
+| Average use today / last 7 / 30 / 365 days | The website's gallons-per-day average for each period. |
 | Last fill, Last fill amount | The most recent delivery, found as a jump of at least 20 gallons (or 10% of the tank) between readings. |
 | Temperature | Temperature at the gauge, in °F. |
 | Last reading | When the gauge last uploaded a reading (about hourly). |

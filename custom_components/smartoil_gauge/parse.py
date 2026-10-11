@@ -116,6 +116,7 @@ def parse_tank(tank: dict, graph: dict | None, now: float) -> dict[str, Any]:
         "usage_rate": None if rate is None else round(rate, 2),
         "days_to_low": None,
         "days_to_eighth": None,
+        "days_to_empty": None,
         "gallons_to_fill": None,
         "low_level": None,
         "battery": _worst_battery(tank.get("battery")),
@@ -133,13 +134,19 @@ def parse_tank(tank: dict, graph: dict | None, now: float) -> dict[str, Any]:
             data["days_to_low"] = (0.0 if data["low_level"] else
                                    _days_until(gallons, capacity * low_fraction, rate))
             data["days_to_eighth"] = _days_until(gallons, capacity * 0.125, rate)
+            data["days_to_empty"] = _days_until(gallons, 0.0, rate)
     if gallons is not None and fillable:
         data["gallons_to_fill"] = round(max(fillable - gallons, 0.0), 1)
 
     dataset = _dataset(graph, tank)
-    for key, period in (("used_7_days", "week"), ("used_30_days", "month"),
-                        ("used_365_days", "year")):
-        data[key] = _num((dataset.get(period) or {}).get("gallons"))
+    # The site's totals and gal/day averages for each graph period. "day"
+    # starts at local midnight; it can be negative early in the day because
+    # readings wander by a gallon or two.
+    for days, period in (("today", "day"), ("7_days", "week"), ("30_days", "month"),
+                         ("365_days", "year")):
+        summary = dataset.get(period) or {}
+        data[f"used_{days}"] = _num(summary.get("gallons"))
+        data[f"average_use_{days}"] = _num(summary.get("gpd"))
     data["temperature"] = _latest_temperature(dataset)
     fill_ts, fill_gallons = detect_last_fill(dataset, capacity)
     data["last_fill"] = _time(fill_ts)
