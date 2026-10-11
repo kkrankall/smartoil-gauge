@@ -1,5 +1,7 @@
 # Smart Oil Gauge for Home Assistant
 
+<img src="custom_components/smartoil_gauge/brand/icon.png" alt="" width="96" align="right">
+
 A custom integration for the [Smart Oil Gauge](https://www.smartoilgauge.com)
 heating-oil tank monitor. It reads the same data as the web app at
 app.smartoilgauge.com: tank level, usage rate, days until the tank runs low,
@@ -65,6 +67,11 @@ pytest
 
 The tests run the client against a fake site that mirrors the real login
 form and data calls, and check the values against captured responses.
+
+The icon is original artwork drawn by `scripts/draw_icon.py`
+(`python scripts/draw_icon.py custom_components/smartoil_gauge/brand` and again
+with `dark` as a second argument; needs Pillow). Home Assistant shows it from
+the integration's `brand` folder; older versions show a placeholder instead.
 
 ## Disclaimer
 
