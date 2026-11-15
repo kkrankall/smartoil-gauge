@@ -1,6 +1,7 @@
 {
   "domain": "smartoil_gauge",
   "name": "Smart Oil Gauge",
+  "categories": ["energy"],
   "codeowners": ["@kkrankall"],
   "config_flow": true,
   "documentation": "https://github.com/kkrankall/smartoil-gauge",
